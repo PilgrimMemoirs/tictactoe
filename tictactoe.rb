@@ -55,8 +55,14 @@ class Game
 
 	def check_columns
 		rows = []
-		false
+		num = @board.count - 1
 
+		while num >= 0
+			@new_row = @board.map {|row| row[num]}
+			rows << @new_row
+			num -= 1
+		end
+		check_rows(rows)
 	end
 
 	def check_diagonals
@@ -68,8 +74,8 @@ end
 funtimes = Game.new
 
 funtimes.take_turn(1, 1)
-funtimes.take_turn(1, 2)
-funtimes.take_turn(1, 3)
+funtimes.take_turn(1, 4)
+funtimes.take_turn(1, 8)
 
 funtimes.print_board
 
