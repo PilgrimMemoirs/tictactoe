@@ -6,7 +6,7 @@ class Game
 		@board = [[1,2,3],[4,5,6],[7,8,9]]
 		@player1 = "x"
 		@player2 = "o"
-		@win = 	true		
+		@win = 	false		
 		@turn = 1
 	end
 

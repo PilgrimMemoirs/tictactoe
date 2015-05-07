@@ -30,6 +30,12 @@
 	<h4> Player 1 Turn: </h4>
 <% end %>
 
+<form method='post' action='/game/turn'>
+    <label for='grid_position'>Spot Number:</label>
+    <input type='text' name='grid_position' id='grid_position' autofocus />
+    <input type='submit' value='Submit' />
+</form>
+
 
 <% if @game.win == true %>
 	<script> alert("You Win!"); window.location = '/'; </script>
