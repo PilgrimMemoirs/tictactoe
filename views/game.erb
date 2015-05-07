@@ -1,8 +1,36 @@
 <h1> Tic Tac Toe </h1>
 
-<h2> Instructions: </h2>
-<p> 
-</p>
+<table>
+	<tr>
+		<td><%= @game.board[0][0] %></td>
+		<td><%= @game.board[0][1] %></td>
+		<td><%= @game.board[0][2] %></td>
+	</tr>
+
+	<tr>
+		<td><%= @game.board[1][0] %></td>
+		<td><%= @game.board[1][1] %></td>
+		<td><%= @game.board[1][2] %></td>
+	</tr>
+
+	<tr>
+		<td><%= @game.board[2][0] %></td>
+		<td><%= @game.board[2][1] %></td>
+		<td><%= @game.board[2][2] %></td>
+	</tr>
+</table>
+
+<h3> Instructions </h3>
+<p> When it is your turn, enter the number of the spot you wish to place your token.</p>
 
 
-<table 
+<% if @game.turn.even? %>
+	<h4> Player 2 Turn </h4>
+<% else %>
+	<h4> Player 1 Turn: </h4>
+<% end %>
+
+
+<% if @game.win == true %>
+	<script> alert("You Win!"); window.location = '/'; </script>
+<% end %>

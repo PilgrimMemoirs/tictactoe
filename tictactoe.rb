@@ -1,11 +1,13 @@
 
 class Game 
-	def initialize(boardsize)
+	attr_reader :board, :turn, :win
+	#TODO - Have initialize with board size
+	def initialize
 		@board = [[1,2,3],[4,5,6],[7,8,9]]
 		@player1 = "x"
 		@player2 = "o"
-		@win = 	false		
-		@turn = 0
+		@win = 	true		
+		@turn = 1
 	end
 
 	def print_board
@@ -92,16 +94,3 @@ class Game
 	end
 
 end
-
-funtimes = Game.new(3)
-
-funtimes.take_turn(4)
-funtimes.take_turn(1)
-funtimes.take_turn(5)
-funtimes.take_turn(2)
-funtimes.take_turn(7)
-funtimes.take_turn(3)
-
-funtimes.print_board
-
-funtimes.check_for_win
