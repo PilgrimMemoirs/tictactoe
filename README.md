@@ -2,7 +2,7 @@
 
 ## Simple Sinatra To-do App
 
-![alt tag](imgs/screenshot.png)
+![alt tag](public/imgs/screenshot.png)
 
 ###To-Do
 *Make custom board size. (Or at least have an easy, medium & hard level)
