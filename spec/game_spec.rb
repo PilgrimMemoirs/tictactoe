@@ -35,7 +35,7 @@ describe 'Playing Game' do
 			@game.take_turn(5)
 			@game.take_turn(8)
 			@game.take_turn(9)
-		expect(@game.win).to eq(true)
+		expect(@game.win).to be(true)
 	end
 
 	it 'detects a win in the second diagonal' do
@@ -45,7 +45,7 @@ describe 'Playing Game' do
 			@game.take_turn(5)
 			@game.take_turn(8)
 			@game.take_turn(9)
-		expect(@game.win).to eq(true)
+		expect(@game.win).to be(true)
 	end
 
 	it 'detects a tie' do
