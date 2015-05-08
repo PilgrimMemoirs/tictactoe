@@ -3,7 +3,7 @@ require_relative('../tictactoe.rb')
 describe 'Playing Game' do
 
 	it 'Changes marker on Board' do
-			@game = Game.new
+		@game = Game.new
 			@game.take_turn(1)
 		expect(@game.board[0][0]).to eq('0')
 	end
