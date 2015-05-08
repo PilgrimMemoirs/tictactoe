@@ -1,15 +1,24 @@
-
 class Game 
 	attr_accessor :board, :turn
 	attr_reader :win
 
 	def initialize(opts={})
-		@board = opts[:board] || [[1,2,3],[4,5,6],[7,8,9]]
+		@board = opts[:board] || [[1,2,3],[4,5,6],[7,8,9]] 
 		@player1 = "X"
 		@player2 = "0"
 		@win = 	 false		
 		@turn = opts[:turn] || 1
+
+		make_board(:board_size)
 		@board_size  = @board.count - 1
+	end
+
+##### Make Board #######
+
+	def make_board(size)
+		spots = size * size
+		arr = (1..spots).to_a
+		@board = arr.each_slice(size).to_a
 	end
 
 ##### Taking a Turn #######
