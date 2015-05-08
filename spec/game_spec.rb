@@ -8,6 +8,14 @@ describe 'Playing Game' do
 		expect(@game.board[0][0]).to eq('0')
 	end
 
+	it 'Tallies turns taken' do
+		@game = Game.new
+		@game.take_turn(1)
+		@game.take_turn(2)
+		@game.take_turn(3)
+		expect(@game.turn).to eq(3)
+	end
+
 	it 'detects a win in a row' do
 			@game = Game.new
 			@game.take_turn(4)
