@@ -39,30 +39,30 @@ class Game
 	end
  
 	def check_for_win #make case statement
-		if check_rows(@board) == true
-			@win = true
-		elsif check_columns == true
-			@win = true
-		elsif check_first_diagonal == true
-			@win = true
-		elsif check_second_diagonal == true
-			@win = true
-		elsif @turn == 10
+
+		if @turn == 10
 			@win = "tie"
 		else 
-			@win = false
+			check_rows(@board) 
+			check_columns
+			check_first_diagonal
+			check_second_diagonal
 		end
+	end
+
+	def game_won
+		@win = true
 	end
 
 
 	#Used to check gameboard rows, also is called by check_columns & check_diagonals
 	#It takes each row of board and first checks for an integer, if there are none it 
-	#checks to see if all the elements of the row are unique, if so, there is a win/true is returned
+	#checks to see if all the elements of the row are unique, if so, Game is Won
 	def check_rows(board)
 		board.each do |n|
 			unless n.include?(Fixnum)
 				if n.uniq.length == 1
-					return true
+					game_won
 				else
 					false
 				end
