@@ -12,6 +12,7 @@ class Game
 		@board_size  = @board.count - 1
 	end
 
+##### Taking a Turn #######
 	def take_turn(position)
 	  place_token(position)
 		check_for_win
@@ -36,7 +37,8 @@ class Game
   	end
 	end
  
-	def check_for_win #make case statement
+##### Checking Board for a Win #######
+	def check_for_win 
 
 		if @turn == 10
 			@win = "tie"
@@ -64,7 +66,7 @@ class Game
 		end
 	end
 
-
+##### Checking all possible win combinations #######
 	def check_columns
 		columns = []
 		num = @board_size
