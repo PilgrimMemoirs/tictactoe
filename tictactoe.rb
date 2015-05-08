@@ -1,20 +1,15 @@
 
 class Game 
-	attr_reader :board, :turn, :win
+	attr_accessor :board, :turn, :win
 	#TODO - Have initialize with board size
-	def initialize
-		@board = [[1,2,3],[4,5,6],[7,8,9]]
+	def initialize(opts={})
+		@board = opts[:board] || [[1,2,3],[4,5,6],[7,8,9]]
 		@player1 = "x"
 		@player2 = "o"
-		@win = 	false		
-		@turn = 1
+		@win = 	opts[:win]  || false		
+		@turn = opts[:turn] || 0
 	end
 
-	def print_board
-		@board.each do |row| 
-			puts row 
-		end
-	end
 
 	#Players turn is dependant on the turn counter above
 	#A position, the number of the spot, is entered
@@ -30,25 +25,36 @@ class Game
     end
 
     #Add way to not override other players tokens
-    def place_token(player, position)
+    def place_token(position)
+    	 if @turn.even?
+    		player = @player2
+    	else
+    		player = @player1
+    	end
+
 	    @board.each do |n|
-		    index = n.index(position)
+		    index = n.index(position.to_i)
 			n[index] = player unless index.nil?
-			@turn += 1
 		end
+		@turn += 1
 	end
  
-	def check_for_win
+	def check_for_win #Add a Check for Tie
 		if check_rows(@board) == true
 			@win = true
 		elsif check_columns == true
 			@win = true
-		elsif check_diagonals == true
+		elsif check_first_diagonal == true
 			@win = true
+		elsif check_second_diagonal == true
+			@win = true
+		elsif @turn == 9
+			@win = "tie"
 		else 
-			print "Keep going!"
+			@win = false
 		end
 	end
+
 
 	#Used to check gameboard rows, also is called by check_columns & check_diagonals
 	#It takes each row of board and first checks for an integer, if there are none it 
@@ -78,19 +84,22 @@ class Game
 		check_rows(columns)
 	end
 
-	def check_diagonals #NEED TO CHECK 2ND DIAGONAL STILL
+	def check_first_diagonal
 		num = @board.count - 1 
-
 		diagonal1 = []
-		diagonal2 =[]
-
 		diagonal1 << (0..num).collect { |i| @board[i][i] } 
+		check_rows(diagonal1)
+	end
+
 		#Top right to bottom left diagonal (diagonal2) still being 
 		#worked on to accomodate custom board sizes
+	def check_second_diagonal
+		num = @board.count - 1 
+		diagonal2 =[]
 		diagonal2 << [@board[0][2], @board[1][1], @board[2][0]]
-
-		check_rows(diagonal1)
 		check_rows(diagonal2)
 	end
 
 end
+
+

@@ -1,42 +1,52 @@
-<h1> Tic Tac Toe </h1>
+<html>
+  <body>
 
-<table>
-	<tr>
-		<td><%= @game.board[0][0] %></td>
-		<td><%= @game.board[0][1] %></td>
-		<td><%= @game.board[0][2] %></td>
-	</tr>
+		  <h1> Tic Tac Toe </h1>
 
-	<tr>
-		<td><%= @game.board[1][0] %></td>
-		<td><%= @game.board[1][1] %></td>
-		<td><%= @game.board[1][2] %></td>
-	</tr>
+		<table>
+			<tr>
+				<td><%= @game.board[0][0] %></td>
+				<td><%= @game.board[0][1] %></td>
+				<td><%= @game.board[0][2] %></td>
+			</tr>
 
-	<tr>
-		<td><%= @game.board[2][0] %></td>
-		<td><%= @game.board[2][1] %></td>
-		<td><%= @game.board[2][2] %></td>
-	</tr>
-</table>
+			<tr>
+				<td><%= @game.board[1][0] %></td>
+				<td><%= @game.board[1][1] %></td>
+				<td><%= @game.board[1][2] %></td>
+			</tr>
 
-<h3> Instructions </h3>
-<p> When it is your turn, enter the number of the spot you wish to place your token.</p>
+			<tr>
+				<td><%= @game.board[2][0] %></td>
+				<td><%= @game.board[2][1] %></td>
+				<td><%= @game.board[2][2] %></td>
+			</tr>
+		</table>
 
-
-<% if @game.turn.even? %>
-	<h4> Player 2 Turn </h4>
-<% else %>
-	<h4> Player 1 Turn: </h4>
-<% end %>
-
-<form method='post' action='/game/turn'>
-    <label for='grid_position'>Spot Number:</label>
-    <input type='text' name='grid_position' id='grid_position' autofocus />
-    <input type='submit' value='Submit' />
-</form>
+		<h3> Instructions </h3>
+		<p> When it is your turn, enter the number of the spot you wish to place your token.</p>
 
 
-<% if @game.win == true %>
-	<script> alert("You Win!"); window.location = '/'; </script>
-<% end %>
+		<% if @game.turn.odd? %>
+			<h4> Player 2 Turn: </h4>
+		<% else %>
+			<h4> Player 1 Turn: </h4>
+		<% end %>
+
+		<form method='post' action='/game/turn'>
+		    <label for='grid_position'>Spot Number:</label>
+		    <input type='text' name='grid_position' id='grid_position' autofocus />
+		    <input type='submit' value='Submit' />
+		</form>
+
+
+
+		<% if @game.win == true %>
+			<script> alert("You Win!"); window.location = '/'; </script>
+		<% end %>
+
+		<% if @game.win == "tie" %>
+				<script> alert("Cat Wins, Try again!"); window.location = '/'; </script>
+		<% end %>
+	</body>
+</html>
