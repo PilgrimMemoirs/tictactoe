@@ -4,8 +4,8 @@ class Game
 	#TODO - Have initialize with board size
 	def initialize(opts={})
 		@board = opts[:board] || [[1,2,3],[4,5,6],[7,8,9]]
-		@player1 = "x"
-		@player2 = "o"
+		@player1 = "X"
+		@player2 = "0"
 		@win = 	opts[:win]  || false		
 		@turn = opts[:turn] || 0
 	end
@@ -17,16 +17,16 @@ class Game
 	#Then check_for_win is called to check 
 	def take_turn(position)
 	    if @turn.even?
-	    	place_token(@player2, position)
+	    	place_token(position)
 		else
-			place_token(@player1, position)
+			place_token(position)
 		end
 		check_for_win
     end
 
     #Add way to not override other players tokens
     def place_token(position)
-    	 if @turn.even?
+    	if @turn.even?
     		player = @player2
     	else
     		player = @player1
@@ -36,10 +36,11 @@ class Game
 		    index = n.index(position.to_i)
 			n[index] = player unless index.nil?
 		end
+
 		@turn += 1
 	end
  
-	def check_for_win #Add a Check for Tie
+	def check_for_win #make case statement
 		if check_rows(@board) == true
 			@win = true
 		elsif check_columns == true
