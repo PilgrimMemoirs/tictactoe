@@ -1,5 +1,3 @@
-
-
 .welcome h1 {
 	color: white;
 }
@@ -15,18 +13,19 @@
 	text-align: center;
 }
 
+a, a:visited {
+	 text-decoration: none;
+	 color: gray;
+}
+
+a:hover {
+	opacity: .5;
+}
+
 .board {
 	width: 50%;
 	margin: 0 auto;
 	text-align: center;
-}
-
-table {
-	margin: 0 auto;
-}
-
-td {
-	padding: 15px;
 }
 
 
@@ -42,6 +41,17 @@ td {
 }
 
 
+/*Tic-Tac-Toe Board*/
+
+table {
+	margin: 0 auto;
+}
+
+td {
+	padding: 15px;
+}
+
+/*Insider Borders*/
 table {
   border-collapse: collapse;
 }
