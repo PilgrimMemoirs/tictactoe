@@ -1,11 +1,13 @@
 <html>
   <head>
-  	<link rel="stylesheet" type="text/css" href="public/normalize.css">
-
+  <meta charset="utf-8">
+  	<link rel="stylesheet" type="text/css" href="normalize.css">
+  	<link rel="stylesheet" type="text/css" href="styles.css">
+  	<title>Tic-Tac-Toe</title>
   </head>
   <body>
-		  <h1> Tic Tac Toe </h1>
-
+	<h1> Tic Tac Toe </h1>
+	<div class="board">	  
 		<table>
 			<tr>
 				<td><%= @game.board[0][0] %></td>
@@ -25,11 +27,13 @@
 				<td><%= @game.board[2][2] %></td>
 			</tr>
 		</table>
-
+	</div>
+	<div id="instructions">
 		<h3> Instructions </h3>
 		<p> When it is your turn, enter the number of the spot you wish to place your token.</p>
+	</div>
 
-
+	<div id="turn">
 		<% if @game.turn.odd? %>
 			<h4> Player 2 Turn: </h4>
 		<% else %>
@@ -41,6 +45,7 @@
 		    <input type='text' name='grid_position' id='grid_position' autofocus />
 		    <input type='submit' value='Submit' />
 		</form>
+	</div>
 
 
 

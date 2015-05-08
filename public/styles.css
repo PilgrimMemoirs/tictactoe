@@ -1,0 +1,42 @@
+
+
+.welcome h1 {
+	color: white;
+}
+
+.welcome {
+	width: 50%;
+	border-radius: 10px;
+	background-color: black;
+	opacity: .4;
+	margin: 0 auto;
+	margin-top: 30px;
+	padding: 10px;
+	text-align: center;
+}
+
+.board {
+	width: 50%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+table {
+	margin: 0 auto;
+}
+
+td {
+	padding: 15px;
+}
+
+
+#instructions {
+	width: 45%;
+	float: left;
+	padding-left: 30px;
+}
+
+#turn {
+	width: 45%;
+	float: right;
+}
