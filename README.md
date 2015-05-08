@@ -5,6 +5,7 @@
 ![alt tag](public/imgs/screenshot2.png)
 
 ###To-Do
+Ideal features/fixes
 * Make custom board size. (Or at least have an easy, medium & hard level)
 * Basically redo all views to accomodate various sizes
 * Split up classes (Board & Player)

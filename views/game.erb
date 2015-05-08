@@ -7,6 +7,7 @@
   </head>
   <body>
 	<h1 id="logo"><a href="/">Tic-Tac-Toe</a></h1>
+	
 	<div class="board">	  
 		<table>
 			<tr>
@@ -28,9 +29,10 @@
 			</tr>
 		</table>
 	</div>
+
 	<div id="instructions">
 		<h3> Instructions </h3>
-		<p> When it is your turn, enter the number of the spot you wish to place your token.</p>
+		<p> When it is your turn, enter the number of the spot <br> you wish to place your marker.</p>
 	</div>
 
 	<div id="turn">
@@ -49,12 +51,12 @@
 
 
 
-		<% if @game.win == true %>
-			<script> alert("You Win!"); window.location = '/'; </script>
-		<% end %>
+	<% if @game.win == true %>
+		<script> alert("You Win!"); window.location = '/'; </script>
+	<% end %>
 
-		<% if @game.win == "tie" %>
-				<script> alert("Cat Wins, Try again!"); window.location = '/'; </script>
-		<% end %>
+	<% if @game.win == "tie" %>
+			<script> alert("Cat Wins, Try again!"); window.location = '/'; </script>
+	<% end %>
 	</body>
 </html>
