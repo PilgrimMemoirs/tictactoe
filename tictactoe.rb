@@ -1,12 +1,13 @@
 
 class Game 
-	attr_accessor :board, :turn, :win
+	attr_accessor :board, :turn
+	attr_reader :win
 	#TODO - Have initialize with board size
 	def initialize(opts={})
 		@board = opts[:board] || [[1,2,3],[4,5,6],[7,8,9]]
 		@player1 = "X"
 		@player2 = "0"
-		@win = 	opts[:win]  || false		
+		@win = 	 false		
 		@turn = opts[:turn] || 0
 	end
 
