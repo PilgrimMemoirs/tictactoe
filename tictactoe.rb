@@ -9,14 +9,14 @@ class Game
 		@win = 	 false		
 		@turn = opts[:turn] || 1
 
-		make_board(:board_size)
+		make_board(3)
 		@board_size  = @board.count - 1
 	end
 
 ##### Make Board #######
 
 	def make_board(size)
-		spots = size * size
+		spots = (size * size)
 		arr = (1..spots).to_a
 		@board = arr.each_slice(size).to_a
 	end
@@ -101,7 +101,6 @@ class Game
 		diagonal2 << [@board[0][2], @board[1][1], @board[2][0]]
 		check_rows(diagonal2)
 	end
-
 end
 
 
