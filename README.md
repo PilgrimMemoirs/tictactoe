@@ -2,7 +2,7 @@
 
 ## Simple Sinatra Tic-Tac-Toe App
 
-![alt tag](public/imgs/screenshot.png)
+![alt tag](public/imgs/screenshot2.png)
 
 ###To-Do
 * Make custom board size. (Or at least have an easy, medium & hard level)

@@ -35,9 +35,9 @@
 
 	<div id="turn">
 		<% if @game.turn.odd? %>
-			<h4> Player 2 Turn: </h4>
-		<% else %>
 			<h4> Player 1 Turn: </h4>
+		<% else %>
+			<h4> Player 2 Turn: </h4>
 		<% end %>
 
 		<form method='post' action='/game/turn'>

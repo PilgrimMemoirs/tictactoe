@@ -2,13 +2,14 @@
 class Game 
 	attr_accessor :board, :turn
 	attr_reader :win
-	#TODO - Have initialize with board size
+
 	def initialize(opts={})
 		@board = opts[:board] || [[1,2,3],[4,5,6],[7,8,9]]
 		@player1 = "X"
 		@player2 = "0"
 		@win = 	 false		
-		@turn = opts[:turn] || 0
+		@turn = opts[:turn] || 1
+		@num  = @board.count - 1
 	end
 
 
@@ -17,11 +18,7 @@ class Game
 	#place_token method is called to place that players token in the desired spot
 	#Then check_for_win is called to check 
 	def take_turn(position)
-	    if @turn.even?
-	    	place_token(position)
-		else
-			place_token(position)
-		end
+	    place_token(position)
 		check_for_win
     end
 
@@ -50,7 +47,7 @@ class Game
 			@win = true
 		elsif check_second_diagonal == true
 			@win = true
-		elsif @turn == 9
+		elsif @turn == 10
 			@win = "tie"
 		else 
 			@win = false
@@ -76,7 +73,7 @@ class Game
 
 	def check_columns
 		columns = []
-		num = @board.count - 1
+		num = @num
 
 		while num >= 0
 			@new_row = @board.map {|row| row[num]}
@@ -87,16 +84,14 @@ class Game
 	end
 
 	def check_first_diagonal
-		num = @board.count - 1 
 		diagonal1 = []
-		diagonal1 << (0..num).collect { |i| @board[i][i] } 
+		diagonal1 << (0..@num).collect { |i| @board[i][i] } 
 		check_rows(diagonal1)
 	end
 
 		#Top right to bottom left diagonal (diagonal2) still being 
 		#worked on to accomodate custom board sizes
 	def check_second_diagonal
-		num = @board.count - 1 
 		diagonal2 =[]
 		diagonal2 << [@board[0][2], @board[1][1], @board[2][0]]
 		check_rows(diagonal2)

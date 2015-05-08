@@ -5,7 +5,7 @@ describe 'Playing Game' do
 	it 'Changes marker on Board' do
 		@game = Game.new
 			@game.take_turn(1)
-		expect(@game.board[0][0]).to eq('0')
+		expect(@game.board[0][0]).to eq('X')
 	end
 
 	it 'Tallies turns taken' do
@@ -13,7 +13,7 @@ describe 'Playing Game' do
 		@game.take_turn(1)
 		@game.take_turn(2)
 		@game.take_turn(3)
-		expect(@game.turn).to eq(3)
+		expect(@game.turn).to eq(4)
 	end
 
 	it 'detects a win in a row' do
