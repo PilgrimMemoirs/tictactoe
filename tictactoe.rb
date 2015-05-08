@@ -9,33 +9,31 @@ class Game
 		@player2 = "0"
 		@win = 	 false		
 		@turn = opts[:turn] || 1
-		@num  = @board.count - 1
+		@board_size  = @board.count - 1
 	end
 
-
-	#Players turn is dependant on the turn counter above
-	#A position, the number of the spot, is entered
-	#place_token method is called to place that players token in the desired spot
-	#Then check_for_win is called to check 
 	def take_turn(position)
-	    place_token(position)
+	  place_token(position)
 		check_for_win
-    end
+  end
 
-    #Add way to not override other players tokens
-    def place_token(position)
-    	if @turn.even?
-    		player = @player2
-    	else
-    		player = @player1
-    	end
+  def place_token(position)
+  	set_player_turn
 
-	    @board.each do |n|
-		    index = n.index(position.to_i)
-			n[index] = player unless index.nil?
+    @board.each do |n|
+	    index = n.index(position.to_i)
+			n[index] = @player unless index.nil?
 		end
 
 		@turn += 1
+	end
+
+	def set_player_turn
+		if @turn.even?
+  		@player = @player2
+  	else
+  		@player = @player1
+  	end
 	end
  
 	def check_for_win #make case statement
@@ -54,10 +52,6 @@ class Game
 		@win = true
 	end
 
-
-	#Used to check gameboard rows, also is called by check_columns & check_diagonals
-	#It takes each row of board and first checks for an integer, if there are none it 
-	#checks to see if all the elements of the row are unique, if so, Game is Won
 	def check_rows(board)
 		board.each do |n|
 			unless n.include?(Fixnum)
@@ -73,7 +67,7 @@ class Game
 
 	def check_columns
 		columns = []
-		num = @num
+		num = @board_size
 
 		while num >= 0
 			@new_row = @board.map {|row| row[num]}
@@ -85,11 +79,11 @@ class Game
 
 	def check_first_diagonal
 		diagonal1 = []
-		diagonal1 << (0..@num).collect { |i| @board[i][i] } 
+		diagonal1 << (0..@board_size).collect { |i| @board[i][i] } 
 		check_rows(diagonal1)
 	end
 
-		#Top right to bottom left diagonal (diagonal2) still being 
+		#Top right to bottom left diagonal (second diagonal) still being 
 		#worked on to accomodate custom board sizes
 	def check_second_diagonal
 		diagonal2 =[]
