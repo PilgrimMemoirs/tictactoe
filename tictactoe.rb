@@ -14,32 +14,33 @@ class Game
 
 ##### Taking a Turn #######
 	def take_turn(position)
-	  place_token(position)
+	  	place_token(position)
 		check_for_win
-  end
+  	end
 
-  def place_token(position)
-  	set_player_turn
+  	def place_token(position)
+	  	set_player_turn
 
-    @board.each do |n|
-	    index = n.index(position.to_i)
+	    @board.each do |n|
+		    index = n.index(position.to_i)
 			n[index] = @player unless index.nil?
 		end
 
 		@turn += 1
 	end
 
+
 	def set_player_turn
 		if @turn.even?
-  		@player = @player2
-  	else
-  		@player = @player1
-  	end
+	  		@player = @player2
+	  	else
+	  		@player = @player1
+	  	end
 	end
  
+
 ##### Checking Board for a Win #######
 	def check_for_win 
-
 		if @turn == 10
 			@win = "tie"
 		else 
@@ -54,6 +55,9 @@ class Game
 		@win = true
 	end
 
+
+##### Methods for checking all possible win combinations #######
+
 	def check_rows(board)
 		board.each do |n|
 			unless n.include?(Fixnum)
@@ -66,7 +70,7 @@ class Game
 		end
 	end
 
-##### Checking all possible win combinations #######
+
 	def check_columns
 		columns = []
 		num = @board_size
@@ -85,14 +89,11 @@ class Game
 		check_rows(diagonal1)
 	end
 
-		#Top right to bottom left diagonal (second diagonal) still being 
-		#worked on to accomodate custom board sizes
 	def check_second_diagonal
 		diagonal2 =[]
 		diagonal2 << [@board[0][2], @board[1][1], @board[2][0]]
 		check_rows(diagonal2)
 	end
-
 end
 
 
